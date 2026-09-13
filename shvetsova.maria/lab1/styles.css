@@ -20,6 +20,7 @@ body {
 }
 
 .container {
+  border: 1px black solid;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -27,10 +28,10 @@ body {
 
 .header {
   background-color:rgb(202 104 247);
-  border-bottom: none;
 }
 
 .main {
+  border: 1px black solid;
   display: flex;
   height: 100%;
 }
@@ -39,7 +40,6 @@ body {
   background-color: rgb(193 157 226);
   width: 300px;
   flex-shrink: 0;
-  border-right: none;
 }
 
 .main-content {
@@ -49,5 +49,4 @@ body {
 
 .footer {
   background-color: rgb(227 207 243);
-  border-top: none;
 }
