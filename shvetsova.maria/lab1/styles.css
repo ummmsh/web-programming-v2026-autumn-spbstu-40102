@@ -12,7 +12,7 @@ body {
   height: 150px;
 }
 
-.footer, .header, .main_content, .sidebar {
+.footer, .header, .main-content, .sidebar {
   border: 1px black solid;
   display: flex;
   align-items: center;
@@ -26,7 +26,8 @@ body {
 }
 
 .header {
-  background-color:rgb(202, 104, 247);
+  background-color:rgb(202 104 247);
+  border-bottom: none;
 }
 
 .main {
@@ -35,16 +36,18 @@ body {
 }
 
 .sidebar {
-  background-color: rgb(193, 157, 226);
+  background-color: rgb(193 157 226);
   width: 300px;
   flex-shrink: 0;
+  border-right: none;
 }
 
-.main_content {
-  background-color: rgb(214, 163, 230);
+.main-content {
+  background-color: rgb(214 163 230);
   flex: 1;
 }
 
 .footer {
-  background-color: rgb(227, 207, 243);
+  background-color: rgb(227 207 243);
+  border-top: none;
 }
