@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 20px;
+  background-color: rgb(170 141 197);
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+form input {
+  flex: 1;
+  min-width: 150px;
+  padding: 8px 10px;
+  border: solid 1px rgb(61, 11, 71);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+form button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(161, 161, 233);
+  color: rgb(74, 58, 148);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+form button:hover {
+  background-color: rgb(52, 52, 88);
+  color: white;
+}
+
+section[data-testid='entity-list'] {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.movie-card {
+  background-color: white;
+  border: solid 1px rgb(61, 11, 71);
+  border-radius: 6px;
+  padding: 12px 16px;
+}
+
+.movie-card h3 {
+  font-size: 17px;
+  margin: 0px 0px 4px 0px;
+}
+
+.movie-card p {
+  font-size: 14px;
+  color: rgb(61, 11, 71);
+  margin: 0px 0px 8px 0px;
+}
+
+.actor-list {
+  list-style: none;
+  padding: 0px;
+  margin: 0px 0px 8px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.actor-list li {
+  background-color: rgb(201, 162, 219);
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.actor-list li button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #340447;
+  font-size: 13px;
+  padding: 0px;
+  line-height: 1;
+}
+
+.movie-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.movie-card-actions button {
+  border: solid 1px rgb(61, 11, 71);
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  color: #340447;
+  font-size: 13px;
+  padding: 4px 10px;
+  transition: all 0.3s ease-out;
+}
+
+.movie-card-actions button:hover {
+  background-color: rgb(61, 11, 71);
+  border: solid 1px white;
+  color: white;
+}
+
+.add-actor-form {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.add-actor-form input {
+  flex: 1;
+  padding: 4px 8px;
+  border: solid 1px rgb(61, 11, 71);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.add-actor-form button {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(61, 11, 71);
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
