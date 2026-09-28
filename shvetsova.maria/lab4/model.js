@@ -60,7 +60,7 @@ export function groupMoviesByCastSize(movies) {
   return groups;
 }
 
-export function getMoviesByActor(movies, actorName) {
+export function findMoviesByActor(movies, actorName) {
   return movies.filter((movie) => movie.actors.includes(actorName));
 }
 
