@@ -1,11 +1,4 @@
-import {
-  Movie,
-  groupMoviesByDirector,
-  getUniqueActors,
-  groupMoviesByNumOfActors,
-  getMoviesByActor,
-  findAllMovieNames,
-} from './model.js';
+import {Movie} from './model.js';
 
 const STORAGE_KEY = 'movies';
 
@@ -16,7 +9,9 @@ function saveMovies(movies) {
 function loadMovies() {
   const raw = localStorage.getItem(STORAGE_KEY);
 
-  if (!raw) return null;
+  if (!raw) {
+    return null;
+  }
 
   const plainObjects = JSON.parse(raw);
 
@@ -101,7 +96,7 @@ function renderMovieCard(movie) {
   card.appendChild(title);
 
   const director = document.createElement('p');
-  director.textContent = 'Режиссёр: ' + movie.director;
+  director.textContent = `Режиссёр: ${movie.director}`;
   card.appendChild(director);
 
   const actorList = document.createElement('ul');
