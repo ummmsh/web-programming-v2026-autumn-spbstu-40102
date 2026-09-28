@@ -56,19 +56,19 @@ section[data-testid='entity-list'] {
 
 .movie-card h3 {
   font-size: 17px;
-  margin: 0px 0px 4px;
+  margin: 0 0 4px;
 }
 
 .movie-card p {
   font-size: 14px;
   color: rgb(61 11 71);
-  margin: 0px 0px 8px;
+  margin: 0 0 8px;
 }
 
 .actor-list {
   list-style: none;
-  padding: 0px;
-  margin: 0px 0px 8px;
+  padding: 0;
+  margin: 0 0 8px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -82,16 +82,6 @@ section[data-testid='entity-list'] {
   display: flex;
   align-items: center;
   gap: 4px;
-}
-
-.actor-list li button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  color: #340447;
-  font-size: 13px;
-  padding: 0px;
-  line-height: 1;
 }
 
 .movie-card-actions {
@@ -133,6 +123,16 @@ section[data-testid='entity-list'] {
   color: white;
   cursor: pointer;
   font-size: 13px;
+}
+
+.actor-list li button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #340447;
+  font-size: 13px;
+  padding: 0;
+  line-height: 1;
 }
 
 form button:hover {
