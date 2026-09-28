@@ -45,14 +45,16 @@ export function getUniqueActors(movies) {
 }
 
 export function groupMoviesByCastSize(movies) {
-  const groups = {};
+  const groups = new Map();
 
   for (const movie of movies) {
-    if (!groups[movie.castSize]) {
-      groups[movie.castSize] = [];
+    const size = movie.castSize;
+
+    if (!groups.has(size)) {
+      groups.set(size, []);
     }
 
-    groups[movie.castSize].push(movie);
+    groups.get(size).push(movie);
   }
 
   return groups;
