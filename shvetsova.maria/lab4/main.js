@@ -67,7 +67,6 @@ function removeActorAsync(movies, movieTitle, actor) {
 }
 
 let movies = loadMovies() || [
-  new Movie('Матрица', 'Вачовски', ['Киану Ривз', 'Керри-Энн Мосс']),
   new Movie('Начало', 'Нолан', ['Леонардо ДиКаприо']),
 ];
 
