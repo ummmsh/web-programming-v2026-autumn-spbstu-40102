@@ -64,6 +64,6 @@ export function findMoviesByActor(movies, actorName) {
   return movies.filter((movie) => movie.actors.includes(actorName));
 }
 
-export function findAllMovieNames(movies) {
+export function getMovieTitles(movies) {
   return movies.map((movie) => movie.title);
 }
