@@ -6,12 +6,16 @@ export function TreeNode({label, children}) {
   const hasChildren = children && children.length > 0;
 
   return (
-    <li className="tree-node">
-      <div className="tree-node-row">
+    <li
+      className="tree-node"
+      data-testid={hasChildren ? 'tree-branch' : undefined}
+    >
+      <div className="tree-node-row" data-testid="tree-level">
         {hasChildren ? (
           <button
             type="button"
             className="tree-toggle"
+            data-testid="tree-toggle"
             aria-expanded={expended}
             onClick={() => setExpended((prev) => !prev)}
           >

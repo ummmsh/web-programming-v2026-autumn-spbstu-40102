@@ -5,7 +5,7 @@ export function BookTree({data}) {
   return (
     <>
       <h1>Книжный магазин</h1>
-      <ul className="tree-root">
+      <ul className="tree-root" data-testid="tree">
         {data.map((authorEntry) => (
           <TreeNode key={authorEntry.author} label={authorEntry.author}>
             {authorEntry.publishers.map((publisher) => (
