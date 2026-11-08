@@ -1,21 +1,33 @@
-import { Modal } from '@/components/Modal/Modal';
-import { CartControl } from '@/components/CartControl/CartControl';
+import {Modal} from '@/components/Modal/Modal';
+import {CartControl} from '@/components/CartControl/CartControl';
 import starIcon from '@/assets/icons/star.svg';
-import { formatPrice, formatRating } from '@/utils/format';
+import {formatPrice, formatRating} from '@/utils/format';
 import styles from './ProductModal.module.scss';
 
-export function ProductModal({ product, onClose }) {
+export function ProductModal({product, onClose}) {
   return (
     <Modal isOpen={Boolean(product)} onClose={onClose} size="l">
       {product && (
         <div className={styles.content}>
           <div className={styles.imageBox}>
-            <img className={styles.image} src={product.image} alt={product.name} />
+            <img
+              className={styles.image}
+              src={product.image}
+              alt={product.name}
+            />
 
             {(product.isNew || product.isHit) && (
               <div className={styles.labels}>
-                {product.isNew && <span className={`${styles.label} ${styles.labelNew}`}>Новинка</span>}
-                {product.isHit && <span className={`${styles.label} ${styles.labelHit}`}>Хит</span>}
+                {product.isNew && (
+                  <span className={`${styles.label} ${styles.labelNew}`}>
+                    Новинка
+                  </span>
+                )}
+                {product.isHit && (
+                  <span className={`${styles.label} ${styles.labelHit}`}>
+                    Хит
+                  </span>
+                )}
               </div>
             )}
           </div>

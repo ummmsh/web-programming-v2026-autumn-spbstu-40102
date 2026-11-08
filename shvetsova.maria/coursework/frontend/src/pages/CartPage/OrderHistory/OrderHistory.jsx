@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { api } from '@/api/client';
-import { formatPrice } from '@/utils/format';
+import {useEffect, useState} from 'react';
+import {api} from '@/api/client';
+import {formatPrice} from '@/utils/format';
 import styles from './OrderHistory.module.scss';
 
-const DELIVERY_LABELS = { pickup: 'Самовывоз', delivery: 'Доставка' };
-const PAYMENT_LABELS = { card: 'Картой', cash: 'Наличными' };
+const DELIVERY_LABELS = {pickup: 'Самовывоз', delivery: 'Доставка'};
+const PAYMENT_LABELS = {card: 'Картой', cash: 'Наличными'};
 
 function formatDate(value) {
   return new Date(value).toLocaleString('ru-RU', {
@@ -33,7 +33,9 @@ export function OrderHistory() {
       })
       .catch(() => {
         if (!ignore) {
-          setError('Не удалось загрузить историю заказов. Попробуйте обновить страницу.');
+          setError(
+            'Не удалось загрузить историю заказов. Попробуйте обновить страницу.',
+          );
         }
       })
       .finally(() => {
@@ -73,7 +75,9 @@ export function OrderHistory() {
               <li key={item.id} className={styles.item}>
                 <span className={styles.name}>{item.name}</span>
                 <span className={styles.quantity}>{item.quantity} шт.</span>
-                <span className={styles.price}>{formatPrice(item.price * item.quantity)}</span>
+                <span className={styles.price}>
+                  {formatPrice(item.price * item.quantity)}
+                </span>
               </li>
             ))}
           </ul>
@@ -81,10 +85,13 @@ export function OrderHistory() {
           <div className={styles.footer}>
             <span className={styles.meta}>
               {DELIVERY_LABELS[order.delivery]}
-              {order.address && `, ${order.address}`} · {PAYMENT_LABELS[order.payment]}
+              {order.address && `, ${order.address}`} ·{' '}
+              {PAYMENT_LABELS[order.payment]}
               {order.packaging && ' · С упаковкой'}
             </span>
-            <span className={styles.total}>Итого: {formatPrice(order.total)}</span>
+            <span className={styles.total}>
+              Итого: {formatPrice(order.total)}
+            </span>
           </div>
         </li>
       ))}

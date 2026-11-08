@@ -1,17 +1,20 @@
-import { useState } from 'react';
-import { ProductCard } from '@/components/ProductCard/ProductCard';
+import {useState} from 'react';
+import {ProductCard} from '@/components/ProductCard/ProductCard';
 import arrowIcon from '@/assets/icons/arrow.svg';
 import styles from './ProductCarousel.module.scss';
 
 const VISIBLE_COUNT = 3;
 
-export function ProductCarousel({ icon, title, description, products }) {
+export function ProductCarousel({icon, title, description, products}) {
   const [start, setStart] = useState(0);
 
   const count = products.length;
   const hasArrows = count > VISIBLE_COUNT;
 
-  const visible = Array.from({ length: Math.min(VISIBLE_COUNT, count) }, (_, i) => products[(start + i) % count]);
+  const visible = Array.from(
+    {length: Math.min(VISIBLE_COUNT, count)},
+    (_, i) => products[(start + i) % count],
+  );
 
   const showPrev = () => setStart((current) => (current - 1 + count) % count);
   const showNext = () => setStart((current) => (current + 1) % count);

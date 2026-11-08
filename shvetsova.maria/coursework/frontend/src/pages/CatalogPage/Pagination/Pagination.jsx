@@ -3,7 +3,7 @@ import styles from './Pagination.module.scss';
 
 function getPageItems(current, total) {
   if (total <= 4) {
-    return Array.from({ length: total }, (_, i) => i + 1);
+    return Array.from({length: total}, (_, i) => i + 1);
   }
   if (current <= 3) {
     return [1, 2, 3, '...', total];
@@ -14,11 +14,14 @@ function getPageItems(current, total) {
   return [1, '...', current, '...', total];
 }
 
-export function Pagination({ className, currentPage, totalPages, onChange }) {
+export function Pagination({className, currentPage, totalPages, onChange}) {
   const items = getPageItems(currentPage, totalPages);
 
   return (
-    <nav className={`${styles.pagination} ${className}`} aria-label="Страницы каталога">
+    <nav
+      className={`${styles.pagination} ${className}`}
+      aria-label="Страницы каталога"
+    >
       <button
         type="button"
         className={`${styles.arrow} ${styles.arrowPrev} ${currentPage > 1 ? '' : styles.hidden}`}

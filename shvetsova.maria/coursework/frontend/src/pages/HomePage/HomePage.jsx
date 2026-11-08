@@ -1,12 +1,12 @@
-import { Advantages } from '../../components/Advantages/Advantages';
-import { Contacts } from '../../components/Contacts/Contacts';
-import { ProductCarousel } from './ProductCarousel/ProductCarousel';
+import {Advantages} from '../../components/Advantages/Advantages';
+import {Contacts} from '../../components/Contacts/Contacts';
+import {ProductCarousel} from './ProductCarousel/ProductCarousel';
 import heroImage from '@/assets/images/banner.webp';
 import fireIcon from '@/assets/icons/fire.svg';
 import sparklesIcon from '@/assets/icons/sparkles.svg';
 import styles from './HomePage.module.scss';
-import { useEffect, useState } from 'react';
-import { api } from '@/api/client';
+import {useEffect, useState} from 'react';
+import {api} from '@/api/client';
 
 export function HomePage() {
   const [newGoods, setNewGoods] = useState([]);
@@ -15,7 +15,10 @@ export function HomePage() {
   useEffect(() => {
     let ignore = false;
 
-    Promise.all([api.getGoods({ sort: 'new', limit: 8 }), api.getGoods({ sort: 'popular', limit: 8 })])
+    Promise.all([
+      api.getGoods({sort: 'new', limit: 8}),
+      api.getGoods({sort: 'popular', limit: 8}),
+    ])
       .then(([newPage, popularPage]) => {
         if (ignore) {
           return;

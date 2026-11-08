@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Button } from '@/components/Button/Button';
-import { TextField } from '@/components/TextField/TextField';
-import { Checkbox } from '@/components/Checkbox/Checkbox';
-import { formatPrice, pluralize } from '@/utils/format';
+import {useState} from 'react';
+import {Button} from '@/components/Button/Button';
+import {TextField} from '@/components/TextField/TextField';
+import {Checkbox} from '@/components/Checkbox/Checkbox';
+import {formatPrice, pluralize} from '@/utils/format';
 import styles from './OrderForm.module.scss';
 
 const INITIAL_VALUES = {
@@ -15,13 +15,13 @@ const INITIAL_VALUES = {
 };
 
 const DELIVERY_OPTIONS = [
-  { value: 'pickup', label: 'Самовывоз' },
-  { value: 'delivery', label: 'Доставка' },
+  {value: 'pickup', label: 'Самовывоз'},
+  {value: 'delivery', label: 'Доставка'},
 ];
 
 const PAYMENT_OPTIONS = [
-  { value: 'card', label: 'Картой' },
-  { value: 'cash', label: 'Наличными' },
+  {value: 'card', label: 'Картой'},
+  {value: 'cash', label: 'Наличными'},
 ];
 
 const PHONE_PATTERN = /^\+?[\d\s()-]{10,}$/;
@@ -52,14 +52,22 @@ function validate(values) {
   return errors;
 }
 
-export function OrderForm({ totalCount, totalPrice, isSubmitting = false, onSubmit }) {
+export function OrderForm({
+  totalCount,
+  totalPrice,
+  isSubmitting = false,
+  onSubmit,
+}) {
   const [values, setValues] = useState(INITIAL_VALUES);
   const [errors, setErrors] = useState({});
 
   const handleChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    setValues((current) => ({ ...current, [name]: type === 'checkbox' ? checked : value }));
-    setErrors((current) => ({ ...current, [name]: undefined }));
+    const {name, value, type, checked} = event.target;
+    setValues((current) => ({
+      ...current,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+    setErrors((current) => ({...current, [name]: undefined}));
   };
 
   const handleSubmit = (event) => {
@@ -155,14 +163,22 @@ export function OrderForm({ totalCount, totalPrice, isSubmitting = false, onSubm
               ))}
             </select>
           </span>
-          {errors.payment && <span className={styles.error}>{errors.payment}</span>}
+          {errors.payment && (
+            <span className={styles.error}>{errors.payment}</span>
+          )}
         </label>
 
-        <Checkbox label="Нужна упаковка" name="packaging" checked={values.packaging} onChange={handleChange} />
+        <Checkbox
+          label="Нужна упаковка"
+          name="packaging"
+          checked={values.packaging}
+          onChange={handleChange}
+        />
 
         <div className={styles.footer}>
           <p className={styles.total}>
-            {totalCount} {pluralize(totalCount, ['товар', 'товара', 'товаров'])} на {formatPrice(totalPrice)}
+            {totalCount} {pluralize(totalCount, ['товар', 'товара', 'товаров'])}{' '}
+            на {formatPrice(totalPrice)}
           </p>
           <Button type="submit" disabled={isEmpty || isSubmitting}>
             {isSubmitting ? 'Оформляем…' : 'Оформить заказ'}

@@ -1,6 +1,6 @@
 import styles from './Checkbox.module.scss';
 
-export function Checkbox({ label, className = '', ...inputProps }) {
+export function Checkbox({label, className = '', ...inputProps}) {
   return (
     <label className={`${styles.checkbox} ${className}`}>
       <input type="checkbox" className={styles.input} {...inputProps} />

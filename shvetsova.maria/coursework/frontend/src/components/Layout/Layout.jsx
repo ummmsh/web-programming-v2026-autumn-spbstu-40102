@@ -1,8 +1,8 @@
-import { Header } from '@/components/Header/Header';
-import { Footer } from '@/components/Footer/Footer';
+import {Header} from '@/components/Header/Header';
+import {Footer} from '@/components/Footer/Footer';
 import styles from './Layout.module.scss';
 
-export function Layout({ children }) {
+export function Layout({children}) {
   return (
     <div className={styles.layout}>
       <Header />

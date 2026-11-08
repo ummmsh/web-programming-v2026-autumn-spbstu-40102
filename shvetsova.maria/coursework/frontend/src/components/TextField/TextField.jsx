@@ -1,7 +1,13 @@
-import { useId } from 'react';
+import {useId} from 'react';
 import styles from './TextField.module.scss';
 
-export function TextField({ label, required = false, error, className = '', ...InputProps }) {
+export function TextField({
+  label,
+  required = false,
+  error,
+  className = '',
+  ...InputProps
+}) {
   const id = useId();
   const errorId = `${id}-error`;
 

@@ -1,10 +1,10 @@
-import { Route, Routes } from 'react-router-dom';
-import { Layout } from './components/Layout/Layout';
-import { HomePage } from './pages/HomePage/HomePage';
-import { LoginPage } from './pages/LoginPage/LoginPage';
-import { CatalogPage } from './pages/CatalogPage/CatalogPage';
-import { CartPage } from './pages/CartPage/CartPage';
-import { ProtectedRoute } from '@/components/ProtectedRoute/ProtectedRoute';
+import {Route, Routes} from 'react-router-dom';
+import {Layout} from './components/Layout/Layout';
+import {HomePage} from './pages/HomePage/HomePage';
+import {LoginPage} from './pages/LoginPage/LoginPage';
+import {CatalogPage} from './pages/CatalogPage/CatalogPage';
+import {CartPage} from './pages/CartPage/CartPage';
+import {ProtectedRoute} from '@/components/ProtectedRoute/ProtectedRoute';
 
 export function App() {
   return (

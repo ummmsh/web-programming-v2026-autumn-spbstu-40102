@@ -1,5 +1,12 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { useAuth } from './AuthContext';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import {useAuth} from './AuthContext';
 
 const CartContext = createContext(null);
 
@@ -16,14 +23,17 @@ function readCart(login) {
   }
 }
 
-export function CartProvider({ children }) {
-  const { user } = useAuth();
+export function CartProvider({children}) {
+  const {user} = useAuth();
   const login = user?.login;
 
-  const [cart, setCart] = useState(() => ({ owner: login, items: readCart(login) }));
+  const [cart, setCart] = useState(() => ({
+    owner: login,
+    items: readCart(login),
+  }));
 
   if (cart.owner !== login) {
-    setCart({ owner: login, items: readCart(login) });
+    setCart({owner: login, items: readCart(login)});
   }
 
   const items = cart.owner === login ? cart.items : [];
@@ -36,7 +46,7 @@ export function CartProvider({ children }) {
   }, [cart]);
 
   const updateItems = useCallback((updater) => {
-    setCart((current) => ({ ...current, items: updater(current.items) }));
+    setCart((current) => ({...current, items: updater(current.items)}));
   }, []);
 
   const add = useCallback(
@@ -44,10 +54,14 @@ export function CartProvider({ children }) {
       updateItems((current) => {
         const existing = current.find((item) => item.id === product.id);
         if (existing) {
-          return current.map((item) => (item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item));
+          return current.map((item) =>
+            item.id === product.id
+              ? {...item, quantity: item.quantity + 1}
+              : item,
+          );
         }
-        const { id, name, price, image } = product;
-        return [...current, { id, name, price, image, quantity: 1 }];
+        const {id, name, price, image} = product;
+        return [...current, {id, name, price, image, quantity: 1}];
       });
     },
     [updateItems],
@@ -57,7 +71,9 @@ export function CartProvider({ children }) {
     (id) => {
       updateItems((current) =>
         current
-          .map((item) => (item.id === id ? { ...item, quantity: item.quantity - 1 } : item))
+          .map((item) =>
+            item.id === id ? {...item, quantity: item.quantity - 1} : item,
+          )
           .filter((item) => item.quantity > 0),
       );
     },
@@ -66,7 +82,9 @@ export function CartProvider({ children }) {
 
   const remove = useCallback(
     (ids) => {
-      updateItems((current) => current.filter((item) => !ids.includes(item.id)));
+      updateItems((current) =>
+        current.filter((item) => !ids.includes(item.id)),
+      );
     },
     [updateItems],
   );

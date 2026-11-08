@@ -9,14 +9,18 @@ export function Button({
   children,
   ...props
 }) {
-  const defaultProps = Component === 'button' ? { type: 'button' } : {};
+  const defaultProps = Component === 'button' ? {type: 'button'} : {};
 
   return (
-    <Component className={`${styles.button} ${styles[variant]} ${className}`} {...defaultProps} {...props}>
+    <Component
+      className={`${styles.button} ${styles[variant]} ${className}`}
+      {...defaultProps}
+      {...props}
+    >
       {icon && (
         <span
           className={styles.icon}
-          style={{ maskImage: `url(${icon})`, WebkitMaskImage: `url(${icon})` }}
+          style={{maskImage: `url(${icon})`, WebkitMaskImage: `url(${icon})`}}
           aria-hidden="true"
         />
       )}

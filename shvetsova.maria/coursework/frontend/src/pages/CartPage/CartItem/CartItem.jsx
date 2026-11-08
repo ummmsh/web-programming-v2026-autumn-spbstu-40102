@@ -1,9 +1,16 @@
-import { Checkbox } from '@/components/Checkbox/Checkbox';
-import { QuantityCounter } from '@/components/QuantityCounter/QuantityCounter';
-import { formatPrice } from '@/utils/format';
+import {Checkbox} from '@/components/Checkbox/Checkbox';
+import {QuantityCounter} from '@/components/QuantityCounter/QuantityCounter';
+import {formatPrice} from '@/utils/format';
 import styles from './CartItem.module.scss';
 
-export function CartItem({ item, isSelected, onToggle, onIncrement, onDecrement, onRemove }) {
+export function CartItem({
+  item,
+  isSelected,
+  onToggle,
+  onIncrement,
+  onDecrement,
+  onRemove,
+}) {
   return (
     <div className={styles.item}>
       <Checkbox
@@ -19,7 +26,11 @@ export function CartItem({ item, isSelected, onToggle, onIncrement, onDecrement,
 
       <p className={styles.name}>{item.name}</p>
 
-      <QuantityCounter value={item.quantity} onDecrement={onDecrement} onIncrement={onIncrement} />
+      <QuantityCounter
+        value={item.quantity}
+        onDecrement={onDecrement}
+        onIncrement={onIncrement}
+      />
 
       <p className={styles.price}>{formatPrice(item.price * item.quantity)}</p>
 

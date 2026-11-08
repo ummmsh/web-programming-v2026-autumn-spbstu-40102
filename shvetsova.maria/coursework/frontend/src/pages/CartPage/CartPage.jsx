@@ -1,23 +1,23 @@
-import { useState } from 'react';
-import { api } from '@/api/client';
-import { useCart } from '@/context/CartContext';
-import { Modal } from '@/components/Modal/Modal';
-import { Button } from '@/components/Button/Button';
-import { CartEmpty } from './CartEmpty/CartEmpty';
-import { CartList } from './CartList/CartList';
-import { OrderForm } from './OrderForm/OrderForm';
-import { OrderHistory } from './OrderHistory/OrderHistory';
-import { RemoveModal } from './RemoveModal/RemoveModal';
+import {useState} from 'react';
+import {api} from '@/api/client';
+import {useCart} from '@/context/CartContext';
+import {Modal} from '@/components/Modal/Modal';
+import {Button} from '@/components/Button/Button';
+import {CartEmpty} from './CartEmpty/CartEmpty';
+import {CartList} from './CartList/CartList';
+import {OrderForm} from './OrderForm/OrderForm';
+import {OrderHistory} from './OrderHistory/OrderHistory';
+import {RemoveModal} from './RemoveModal/RemoveModal';
 import styles from './CartPage.module.scss';
 
 const TABS = [
-  { id: 'cart', label: 'Корзина' },
-  { id: 'history', label: 'История заказов' },
+  {id: 'cart', label: 'Корзина'},
+  {id: 'history', label: 'История заказов'},
 ];
 
 export function CartPage() {
   const [tab, setTab] = useState('cart');
-  const { items, add, decrement, remove } = useCart();
+  const {items, add, decrement, remove} = useCart();
   const [excludedIds, setExcludedIds] = useState([]);
   const [itemsToRemove, setItemsToRemove] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,13 +25,22 @@ export function CartPage() {
   const [createdOrder, setCreatedOrder] = useState(null);
 
   const selectedItems = items.filter((item) => !excludedIds.includes(item.id));
-  const isAllSelected = items.length > 0 && selectedItems.length === items.length;
-  const totalCount = selectedItems.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = selectedItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const isAllSelected =
+    items.length > 0 && selectedItems.length === items.length;
+  const totalCount = selectedItems.reduce(
+    (sum, item) => sum + item.quantity,
+    0,
+  );
+  const totalPrice = selectedItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
 
   const toggleItem = (id) => {
     setExcludedIds((current) =>
-      current.includes(id) ? current.filter((excludedId) => excludedId !== id) : [...current, id],
+      current.includes(id)
+        ? current.filter((excludedId) => excludedId !== id)
+        : [...current, id],
     );
   };
 
@@ -51,7 +60,7 @@ export function CartPage() {
     try {
       const order = await api.createOrder({
         ...values,
-        items: selectedItems.map(({ id, quantity }) => ({ id, quantity })),
+        items: selectedItems.map(({id, quantity}) => ({id, quantity})),
       });
       remove(order.items.map((item) => item.id));
       setCreatedOrder(order);
@@ -66,7 +75,7 @@ export function CartPage() {
     <section className={styles.page}>
       <div className="wrapper">
         <div className={styles.tabs} role="tablist">
-          {TABS.map(({ id, label }) => (
+          {TABS.map(({id, label}) => (
             <button
               key={id}
               type="button"
@@ -108,9 +117,16 @@ export function CartPage() {
         {tab === 'history' && <OrderHistory />}
       </div>
 
-      <RemoveModal items={itemsToRemove} onConfirm={confirmRemove} onClose={() => setItemsToRemove([])} />
+      <RemoveModal
+        items={itemsToRemove}
+        onConfirm={confirmRemove}
+        onClose={() => setItemsToRemove([])}
+      />
 
-      <Modal isOpen={Boolean(createdOrder)} onClose={() => setCreatedOrder(null)}>
+      <Modal
+        isOpen={Boolean(createdOrder)}
+        onClose={() => setCreatedOrder(null)}
+      >
         <h2>Спасибо, ваш заказ успешно оформлен.</h2>
         <p>Номер заказа: {createdOrder?.id}.</p>
         <Button

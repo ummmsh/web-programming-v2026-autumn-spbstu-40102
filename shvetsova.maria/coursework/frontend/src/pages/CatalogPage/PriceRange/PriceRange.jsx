@@ -4,14 +4,14 @@ const STEP = 10;
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
-export function PriceRange({ min, max, from, to, onFromChange, onToChange }) {
+export function PriceRange({min, max, from, to, onFromChange, onToChange}) {
   const fromValue = from === '' ? min : from;
   const toValue = to === '' ? max : to;
 
   const toPercent = (value) => ((value - min) / (max - min)) * 100;
 
   const handleInput = (setValue) => (event) => {
-    const { value } = event.target;
+    const {value} = event.target;
     setValue(value === '' ? '' : Number(value));
   };
 
@@ -27,8 +27,10 @@ export function PriceRange({ min, max, from, to, onFromChange, onToChange }) {
     }
   };
 
-  const handleFromSlider = (event) => onFromChange(Math.min(Number(event.target.value), toValue));
-  const handleToSlider = (event) => onToChange(Math.max(Number(event.target.value), fromValue));
+  const handleFromSlider = (event) =>
+    onFromChange(Math.min(Number(event.target.value), toValue));
+  const handleToSlider = (event) =>
+    onToChange(Math.max(Number(event.target.value), fromValue));
 
   const left = toPercent(clamp(fromValue, min, max));
   const right = toPercent(clamp(toValue, min, max));
@@ -65,7 +67,10 @@ export function PriceRange({ min, max, from, to, onFromChange, onToChange }) {
 
       <div className={styles.slider}>
         <div className={styles.track} />
-        <div className={styles.fill} style={{ left: `${left}%`, width: `${right - left}%` }} />
+        <div
+          className={styles.fill}
+          style={{left: `${left}%`, width: `${right - left}%`}}
+        />
 
         <input
           className={`${styles.thumb} ${left > 90 ? styles.thumbTop : ''}`}

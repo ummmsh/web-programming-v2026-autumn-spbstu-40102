@@ -17,10 +17,10 @@ function getErrorMessage(data) {
   return 'Ошибка сервера, попробуйте позже';
 }
 
-async function request(path, { method = 'GET', body } = {}) {
+async function request(path, {method = 'GET', body} = {}) {
   const response = await fetch(`/api${path}`, {
     method,
-    headers: body ? { 'Content-Type': 'application/json' } : undefined,
+    headers: body ? {'Content-Type': 'application/json'} : undefined,
     body: body ? JSON.stringify(body) : undefined,
   });
 
@@ -57,11 +57,12 @@ function buildQuery(params) {
 }
 
 export const api = {
-  login: (credentials) => request('/login', { method: 'POST', body: credentials }),
-  logout: () => request('/logout', { method: 'POST' }),
+  login: (credentials) =>
+    request('/login', {method: 'POST', body: credentials}),
+  logout: () => request('/logout', {method: 'POST'}),
   me: () => request('/me'),
   getGoods: (params = {}) => request(`/goods${buildQuery(params)}`),
   getGoodsFilters: () => request('/goods/filters'),
-  createOrder: (order) => request('/orders', { method: 'POST', body: order }),
+  createOrder: (order) => request('/orders', {method: 'POST', body: order}),
   getOrders: () => request('/orders'),
 };

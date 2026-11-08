@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import {useEffect} from 'react';
+import {createPortal} from 'react-dom';
 import styles from './Modal.module.scss';
 
-export function Modal({ isOpen, onClose, size = 's', children }) {
+export function Modal({isOpen, onClose, size = 's', children}) {
   useEffect(() => {
     if (!isOpen) {
       return undefined;
@@ -28,9 +28,21 @@ export function Modal({ isOpen, onClose, size = 's', children }) {
   }
 
   return createPortal(
-    <div className={styles.overlay} onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
-      <div className={`${styles.window} ${styles[size]}`} role="dialog" aria-modal="true">
-        <button type="button" className={styles.close} onClick={onClose} aria-label="Закрыть" />
+    <div
+      className={styles.overlay}
+      onMouseDown={(event) => event.target === event.currentTarget && onClose()}
+    >
+      <div
+        className={`${styles.window} ${styles[size]}`}
+        role="dialog"
+        aria-modal="true"
+      >
+        <button
+          type="button"
+          className={styles.close}
+          onClick={onClose}
+          aria-label="Закрыть"
+        />
         {children}
       </div>
     </div>,

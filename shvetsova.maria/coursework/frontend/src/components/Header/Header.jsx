@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Link, useMatch, useNavigate } from 'react-router-dom';
-import { useAuth } from '@/context/AuthContext';
-import { useCart } from '@/context/CartContext';
-import { Button } from '@/components/Button/Button';
+import {useState, useEffect} from 'react';
+import {Link, useMatch, useNavigate} from 'react-router-dom';
+import {useAuth} from '@/context/AuthContext';
+import {useCart} from '@/context/CartContext';
+import {Button} from '@/components/Button/Button';
 import catalogIcon from '@/assets/icons/catalog.svg';
 import cartIcon from '@/assets/icons/cart.svg';
 import profileIcon from '@/assets/icons/profile.svg';
 import styles from './Header.module.scss';
 
 export function Header() {
-  const { user, logout } = useAuth();
+  const {user, logout} = useAuth();
   const navigate = useNavigate();
-  const { totalCount } = useCart();
+  const {totalCount} = useCart();
   const isCatalog = Boolean(useMatch('/catalog'));
   const isCart = Boolean(useMatch('/cart'));
 
@@ -26,7 +26,7 @@ export function Header() {
     const handleScroll = () => setIsScrolled(window.scrollY > 0);
 
     handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, {passive: true});
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

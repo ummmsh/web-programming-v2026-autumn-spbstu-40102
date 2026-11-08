@@ -1,26 +1,26 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '@/context/AuthContext';
-import { Modal } from '@/components/Modal/Modal';
-import { TextField } from '@/components/TextField/TextField';
-import { Button } from '@/components/Button/Button';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {useAuth} from '@/context/AuthContext';
+import {Modal} from '@/components/Modal/Modal';
+import {TextField} from '@/components/TextField/TextField';
+import {Button} from '@/components/Button/Button';
 import styles from './LoginPage.module.scss';
 
 const REQUIRED_MESSAGE = 'Заполните обязательное поле';
 
 export function LoginPage() {
-  const { login } = useAuth();
+  const {login} = useAuth();
   const navigate = useNavigate();
 
-  const [values, setValues] = useState({ login: '', password: '' });
+  const [values, setValues] = useState({login: '', password: ''});
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    setValues((current) => ({ ...current, [name]: value }));
-    setErrors((current) => ({ ...current, [name]: undefined }));
+    const {name, value} = event.target;
+    setValues((current) => ({...current, [name]: value}));
+    setErrors((current) => ({...current, [name]: undefined}));
   };
 
   const handleSubmit = async (event) => {
