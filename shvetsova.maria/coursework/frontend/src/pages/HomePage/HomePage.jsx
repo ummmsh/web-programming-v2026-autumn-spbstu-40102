@@ -17,7 +17,9 @@ export function HomePage() {
 
     Promise.all([api.getGoods({ sort: 'new', limit: 8 }), api.getGoods({ sort: 'popular', limit: 8 })])
       .then(([newPage, popularPage]) => {
-        if (ignore) return;
+        if (ignore) {
+          return;
+        }
         setNewGoods(newPage.items);
         setPopularGoods(popularPage.items);
       })
@@ -30,7 +32,7 @@ export function HomePage() {
 
   return (
     <div className={`wrapper ${styles.page}`}>
-      <section className={`mb-20 ${styles.hero}`}>
+      <section className={styles.hero}>
         <img
           className={styles.heroImage}
           src={heroImage}

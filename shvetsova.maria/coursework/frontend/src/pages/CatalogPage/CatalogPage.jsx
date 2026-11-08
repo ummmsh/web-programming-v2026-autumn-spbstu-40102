@@ -3,15 +3,11 @@ import { api } from '@/api/client';
 import { ProductCard } from '@/components/ProductCard/ProductCard';
 import { Sorting } from './Sorting/Sorting';
 import { Pagination } from './Pagination/Pagination';
-import { Button } from '@/components/Button/Button';
-import cartIcon from '@/assets/icons/cart.svg';
 import styles from './CatalogPage.module.scss';
 import { Filters } from './Filters/Filters';
-import { QuantityCounter } from '../../components/QuantityCounter/QuantityCounter';
 import { CartControl } from '@/components/CartControl/CartControl';
 import { ProductModal } from './ProductModal/ProductModal';
 
-const PAGE_SIZE = 9;
 const INITIAL_FILTERS = { type: [], color: [], price_min: '', price_max: '' };
 
 export function CatalogPage() {
@@ -30,15 +26,21 @@ export function CatalogPage() {
     api
       .getGoods({ sort, page, ...filters })
       .then((result) => {
-        if (ignore) return;
+        if (ignore) {
+          return;
+        }
         setData(result);
         setError('');
       })
-      .catch((err) => {
-        if (!ignore) setError('Не удалось загрузить товары. Попробуйте обновить страницу.');
+      .catch(() => {
+        if (!ignore) {
+          setError('Не удалось загрузить товары. Попробуйте обновить страницу.');
+        }
       })
       .finally(() => {
-        if (!ignore) setIsLoading(false);
+        if (!ignore) {
+          setIsLoading(false);
+        }
       });
 
     return () => {

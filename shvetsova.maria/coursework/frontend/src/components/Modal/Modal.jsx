@@ -4,10 +4,14 @@ import styles from './Modal.module.scss';
 
 export function Modal({ isOpen, onClose, size = 's', children }) {
   useEffect(() => {
-    if (!isOpen) return undefined;
+    if (!isOpen) {
+      return undefined;
+    }
 
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') onClose();
+      if (event.key === 'Escape') {
+        onClose();
+      }
     };
 
     document.addEventListener('keydown', handleKeyDown);
@@ -19,7 +23,9 @@ export function Modal({ isOpen, onClose, size = 's', children }) {
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
   return createPortal(
     <div className={styles.overlay} onMouseDown={(event) => event.target === event.currentTarget && onClose()}>

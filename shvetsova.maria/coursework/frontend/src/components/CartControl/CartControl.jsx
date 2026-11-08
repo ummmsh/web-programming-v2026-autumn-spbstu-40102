@@ -5,7 +5,7 @@ import { QuantityCounter } from '@/components/QuantityCounter/QuantityCounter';
 import cartIcon from '@/assets/icons/cart.svg';
 import styles from './CartControl.module.scss';
 
-export function CartControl({ product, layout = 'card', onAddClick, onAdded }) {
+export function CartControl({ product, layout = 'card', onAdded }) {
   const { getQuantity, add, decrement } = useCart();
   const quantity = getQuantity(product.id);
 

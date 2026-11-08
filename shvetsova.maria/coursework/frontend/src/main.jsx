@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from '@/context/AuthContext';
 import { CartProvider } from '@/context/CartContext';
 import { App } from './App';
-import './styles/tailwind.css';
 import './styles/global.scss';
 
 createRoot(document.getElementById('root')).render(

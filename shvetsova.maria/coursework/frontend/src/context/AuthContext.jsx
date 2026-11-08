@@ -13,13 +13,19 @@ export function AuthProvider({ children }) {
     api
       .me()
       .then((data) => {
-        if (!ignore) setUser(data);
+        if (!ignore) {
+          setUser(data);
+        }
       })
       .catch(() => {
-        if (!ignore) setUser(null);
+        if (!ignore) {
+          setUser(null);
+        }
       })
       .finally(() => {
-        if (!ignore) setIsLoading(false);
+        if (!ignore) {
+          setIsLoading(false);
+        }
       });
 
     return () => {

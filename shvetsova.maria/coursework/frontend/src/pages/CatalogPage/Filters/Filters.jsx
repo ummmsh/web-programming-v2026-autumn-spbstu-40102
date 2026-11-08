@@ -36,7 +36,9 @@ export function Filters({ onApply, onReset }) {
     onReset();
   };
 
-  if (!options) return null;
+  if (!options) {
+    return null;
+  }
 
   return (
     <form className={styles.filters} onSubmit={handleSubmit}>

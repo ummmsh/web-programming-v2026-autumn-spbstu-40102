@@ -16,11 +16,15 @@ export function PriceRange({ min, max, from, to, onFromChange, onToChange }) {
   };
 
   const handleFromBlur = () => {
-    if (from !== '') onFromChange(clamp(from, min, toValue));
+    if (from !== '') {
+      onFromChange(clamp(from, min, toValue));
+    }
   };
 
   const handleToBlur = () => {
-    if (to !== '') onToChange(clamp(to, fromValue, max));
+    if (to !== '') {
+      onToChange(clamp(to, fromValue, max));
+    }
   };
 
   const handleFromSlider = (event) => onFromChange(Math.min(Number(event.target.value), toValue));

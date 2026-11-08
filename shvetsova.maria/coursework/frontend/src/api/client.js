@@ -6,8 +6,14 @@ export class ApiError extends Error {
 }
 
 function getErrorMessage(data) {
-  if (typeof data?.detail === 'string') return data.detail;
-  if (Array.isArray(data?.detail)) return 'Проверьте введенные данные';
+  if (typeof data?.detail === 'string') {
+    return data.detail;
+  }
+
+  if (Array.isArray(data?.detail)) {
+    return 'Проверьте введенные данные';
+  }
+
   return 'Ошибка сервера, попробуйте позже';
 }
 
@@ -18,7 +24,9 @@ async function request(path, { method = 'GET', body } = {}) {
     body: body ? JSON.stringify(body) : undefined,
   });
 
-  if (response.status === 204) return null;
+  if (response.status === 204) {
+    return null;
+  }
 
   const data = await response.json().catch(() => null);
 
@@ -33,7 +41,9 @@ function buildQuery(params) {
   const query = new URLSearchParams();
 
   Object.entries(params).forEach(([key, value]) => {
-    if (value === undefined || value === null || value === '') return;
+    if (value === undefined || value === null || value === '') {
+      return;
+    }
 
     if (Array.isArray(value)) {
       value.forEach((item) => query.append(key, item));

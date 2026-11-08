@@ -2,9 +2,15 @@ import arrowIcon from '@/assets/icons/arrow.svg';
 import styles from './Pagination.module.scss';
 
 function getPageItems(current, total) {
-  if (total <= 4) return Array.from({ length: total }, (_, i) => i + 1);
-  if (current <= 3) return [1, 2, 3, '...', total];
-  if (current >= total - 2) return [1, '...', total - 2, total - 1, total];
+  if (total <= 4) {
+    return Array.from({ length: total }, (_, i) => i + 1);
+  }
+  if (current <= 3) {
+    return [1, 2, 3, '...', total];
+  }
+  if (current >= total - 2) {
+    return [1, '...', total - 2, total - 1, total];
+  }
   return [1, '...', current, '...', total];
 }
 

@@ -23,7 +23,7 @@ export function ProductModal({ product, onClose }) {
           <div className={styles.info}>
             <h2 className={styles.title}>{product.name}</h2>
 
-            {product.rating != null && (
+            {product.rating !== null && (
               <p className={styles.rating}>
                 <img className={styles.star} src={starIcon} alt="" />
                 {formatRating(product.rating)}

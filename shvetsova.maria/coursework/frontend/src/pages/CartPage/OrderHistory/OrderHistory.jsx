@@ -27,13 +27,19 @@ export function OrderHistory() {
     api
       .getOrders()
       .then((data) => {
-        if (!ignore) setOrders(data);
+        if (!ignore) {
+          setOrders(data);
+        }
       })
       .catch(() => {
-        if (!ignore) setError('Не удалось загрузить историю заказов. Попробуйте обновить страницу.');
+        if (!ignore) {
+          setError('Не удалось загрузить историю заказов. Попробуйте обновить страницу.');
+        }
       })
       .finally(() => {
-        if (!ignore) setIsLoading(false);
+        if (!ignore) {
+          setIsLoading(false);
+        }
       });
 
     return () => {

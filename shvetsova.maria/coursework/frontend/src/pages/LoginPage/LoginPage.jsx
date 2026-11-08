@@ -27,11 +27,17 @@ export function LoginPage() {
     event.preventDefault();
 
     const nextErrors = {};
-    if (!values.login.trim()) nextErrors.login = REQUIRED_MESSAGE;
-    if (!values.password) nextErrors.password = REQUIRED_MESSAGE;
+    if (!values.login.trim()) {
+      nextErrors.login = REQUIRED_MESSAGE;
+    }
+    if (!values.password) {
+      nextErrors.password = REQUIRED_MESSAGE;
+    }
     setErrors(nextErrors);
 
-    if (Object.keys(nextErrors).length > 0) return;
+    if (Object.keys(nextErrors).length > 0) {
+      return;
+    }
 
     setIsSubmitting(true);
 

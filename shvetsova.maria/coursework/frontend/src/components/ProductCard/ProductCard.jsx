@@ -19,11 +19,11 @@ export function ProductCard({ product, onClick, children }) {
       </div>
 
       <h3 className={`h2 ${styles.price}`}>{formatPrice(price)}</h3>
-      <p className={`${styles.name} ${rating == null ? 'mb-8' : ''}`} title={name}>
+      <p className={`${styles.name} ${rating === null ? 'mb-8' : ''}`} title={name}>
         {name}
       </p>
 
-      {rating != null && (
+      {rating !== null && (
         <p className={styles.rating}>
           <img className={styles.star} src={starIcon} alt="star-icon" />
           {formatRating(rating)}

@@ -6,7 +6,9 @@ const CartContext = createContext(null);
 const storageKey = (login) => `gadget-hub:cart:${login}`;
 
 function readCart(login) {
-  if (!login) return [];
+  if (!login) {
+    return [];
+  }
   try {
     return JSON.parse(localStorage.getItem(storageKey(login))) ?? [];
   } catch {
@@ -27,7 +29,9 @@ export function CartProvider({ children }) {
   const items = cart.owner === login ? cart.items : [];
 
   useEffect(() => {
-    if (!cart.owner) return;
+    if (!cart.owner) {
+      return;
+    }
     localStorage.setItem(storageKey(cart.owner), JSON.stringify(cart.items));
   }, [cart]);
 
